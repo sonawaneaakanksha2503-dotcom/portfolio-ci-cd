@@ -1,10 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aakanksha Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
+    body {background: linear-gradient(135deg,#f8e1f4,#e0c3fc); color:#333;}
+
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:20px 10%; background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
+      position:sticky; top:0; z-index:1000;
+    }
+    header h1 {color:#a64ac9;}
+    nav a {margin:0 10px; text-decoration:none; color:#333; font-weight:500;}
+    nav a:hover {color:#a64ac9;}
+
+    .hero {
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+      padding:60px 10%; text-align:center;
+    }
+    .hero img {
+      width:250px; border-radius:50%; box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
+
+    .hero-text {max-width:500px; margin-left:40px;}
+    .hero-text h2 {font-size:2.5rem; color:#a64ac9;}
+    .hero-text p {margin:15px 0;}
+    .btn {
+      padding:10px 20px; border:none; background:#a64ac9; color:white;
+      border-radius:20px; cursor:pointer; transition:0.3s;
+    }
+    .btn:hover {background:#7b2cbf; transform:scale(1.05);} 
+
+    section {padding:60px 10%;}
+    h2.section-title {text-align:center; margin-bottom:40px; color:#7b2cbf;}
+
+    .projects {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;
+    }
+    .card {
+      background:white; padding:20px; border-radius:15px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+    .card:hover {transform:translateY(-10px) scale(1.02);} 
+
+    .skills {display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
+    .skill {
+      padding:10px 15px; background:#a64ac9; color:white;
+      border-radius:20px; font-size:14px;
+    }
+
+    footer {
+      text-align:center; padding:20px;
+      background:#a64ac9; color:white;
+    }
+
+    @media(max-width:768px){
+      .hero {flex-direction:column;}
+      .hero-text {margin-left:0; margin-top:20px;}
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello Aakanksha 🚀</h1>
-  <p>This is my CI/CD project</p>
+
+<header>
+  <h1>Aakanksha</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="C:\Users\akshu\OneDrive\porfolio\WhatsApp Image 2026-04-12 at 1.03.05 AM" alt="profile">
+  <div class="hero-text">
+    <h2>Hello, I'm Aakanksha 💜</h2>
+    <p>A passionate Web Developer & Cloud Enthusiast.</p>
+    <button class="btn">Hire Me</button>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <p style="text-align:center; max-width:600px; margin:auto;">
+    I am an MCA student with skills in Web Development, AWS, and Python. I love building real-world projects and solving problems.
+  </p>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>Coffee Shop System</h3>
+      <p>Python & SQL based management system.</p>
+    </div>
+    <div class="card">
+      <h3>Portfolio CI/CD</h3>
+      <p>Deployed using GitHub Actions & AWS S3.</p>
+    </div>
+    <div class="card">
+      <h3>Event ERP</h3>
+      <p>Full-stack event management system.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills">
+    <div class="skill">HTML</div>
+    <div class="skill">CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">Python</div>
+    <div class="skill">AWS</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+  <p style="text-align:center;">Email: sonawaneaakanksha2503@gmail.com</p>
+</section>
+
+<footer>
+  <p>© 2026 Aakanksha | Designed with 💜</p>
+</footer>
+
 </body>
 </html>
