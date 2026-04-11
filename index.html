@@ -4,135 +4,264 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aakanksha Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
-    body {background: linear-gradient(135deg,#f8e1f4,#e0c3fc); color:#333;}
+    *{margin:0;padding:0;box-sizing:border-box}
 
-    header {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:20px 10%; background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-      position:sticky; top:0; z-index:1000;
-    }
-    header h1 {color:#a64ac9;}
-    nav a {margin:0 10px; text-decoration:none; color:#333; font-weight:500;}
-    nav a:hover {color:#a64ac9;}
+    body{font-family:'Poppins',sans-serif;background:#0f172a;color:white;transition:0.4s;}
+    body.light{background:linear-gradient(135deg,#fdf2f8,#fce7f3,#e0f2fe);color:#4b5563;}
 
-    .hero {
-      display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
-      padding:60px 10%; text-align:center;
-    }
-    .hero img {
-      width:250px; border-radius:50%; box-shadow:0 10px 30px rgba(0,0,0,0.2);
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;position:sticky;top:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);z-index:1000;animation:slideDown 1s ease;}
+    @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
 
-    .hero-text {max-width:500px; margin-left:40px;}
-    .hero-text h2 {font-size:2.5rem; color:#a64ac9;}
-    .hero-text p {margin:15px 0;}
-    .btn {
-      padding:10px 20px; border:none; background:#a64ac9; color:white;
-      border-radius:20px; cursor:pointer; transition:0.3s;
-    }
-    .btn:hover {background:#7b2cbf; transform:scale(1.05);} 
+    nav a{margin:0 15px;text-decoration:none;color:white;font-weight:500;position:relative;}
+    nav a::after{content:'';position:absolute;width:0;height:2px;background:#38bdf8;left:0;bottom:-5px;transition:0.3s;}
+    nav a:hover::after{width:100%;}
 
-    section {padding:60px 10%;}
-    h2.section-title {text-align:center; margin-bottom:40px; color:#7b2cbf;}
+    .toggle{cursor:pointer;padding:8px 12px;background:#38bdf8;border-radius:20px;}
 
-    .projects {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;
-    }
-    .card {
-      background:white; padding:20px; border-radius:15px;
-      box-shadow:0 5px 20px rgba(0,0,0,0.1);
-      transition:0.3s;
-    }
-    .card:hover {transform:translateY(-10px) scale(1.02);} 
+    section{padding:80px 50px;min-height:100vh;text-align:center;animation:fadeIn 1s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
-    .skills {display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
-    .skill {
-      padding:10px 15px; background:#a64ac9; color:white;
-      border-radius:20px; font-size:14px;
+    h2{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:20px;display:inline-block;padding:10px 20px;background:linear-gradient(45deg,#38bdf8,#9333ea);border-radius:10px;}
+
+    .hero{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;text-align:left;}
+    .hero img{width:300px;border-radius:20px;box-shadow:0 0 40px rgba(56,189,248,0.5);animation:float 4s infinite ease-in-out;}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+    .typing{font-size:28px;color:#38bdf8;margin-top:10px;}
+    .btn{display:inline-block;margin-top:20px;padding:12px 25px;background:#9333ea;border-radius:25px;text-decoration:none;color:white;}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .card{padding:20px;background:rgba(255,255,255,0.05);border-radius:15px;transition:0.4s;}
+    .card:hover{transform:translateY(-10px);background:linear-gradient(45deg,#38bdf8,#9333ea);}
+
+    .about-box{background:rgba(255,255,255,0.05);padding:25px;border-radius:15px;text-align:left;}
+    .about-box ul{list-style:none}
+    .about-box li{margin-bottom:12px;position:relative;padding-left:25px;}
+    .about-box li::before{content:'➤';position:absolute;left:0;color:#38bdf8;}
+
+    /* ===== ELITE SKILLS ===== */
+    .skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;margin-top:30px;}
+
+    .skill-card{
+      padding:25px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.07);
+      backdrop-filter:blur(10px);
+      text-align:center;
+      transition:0.4s;
+      position:relative;
     }
 
-    footer {
-      text-align:center; padding:20px;
-      background:#a64ac9; color:white;
+    .skill-card img{width:55px;margin-bottom:10px;transition:0.3s;}
+
+    .skill-card .tags{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:6px;
     }
 
-    @media(max-width:768px){
-      .hero {flex-direction:column;}
-      .hero-text {margin-left:0; margin-top:20px;}
+    .tag{
+      padding:4px 8px;
+      border-radius:10px;
+      font-size:12px;
+      background:rgba(56,189,248,0.2);
     }
+
+    .skill-card:hover{
+      transform:translateY(-12px) scale(1.05);
+      background:linear-gradient(45deg,#38bdf8,#9333ea);
+      box-shadow:0 15px 40px rgba(147,51,234,0.5);
+    }
+
+    .skill-card:hover img{transform:scale(1.2) rotate(5deg);}
+
+    /* ===== ELITE CONTACT ===== */
+    .contact-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:30px;}
+
+    .contact-card{
+      padding:25px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.07);
+      text-align:center;
+      transition:0.4s;
+      position:relative;
+    }
+
+    .contact-card img{width:45px;margin-bottom:10px;}
+
+    .contact-card a{
+      display:inline-block;
+      margin-top:10px;
+      padding:8px 15px;
+      border-radius:20px;
+      text-decoration:none;
+      background:#38bdf8;
+      color:white;
+      font-size:14px;
+    }
+
+    .contact-card:hover{
+      transform:translateY(-10px) scale(1.05);
+      background:linear-gradient(45deg,#38bdf8,#9333ea);
+      box-shadow:0 15px 40px rgba(147,51,234,0.5);
+    }
+
+    .typing-quote{margin-top:25px;font-size:22px;font-weight:bold;font-style:italic;color:#9333ea;}
+
+    footer{text-align:center;padding:20px;background:#020617;}
+
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Aakanksha</h1>
+  <h1>Aakanksha Sonawane</h1>
   <nav>
-    <a href="#">Home</a>
+    <a href="#home">Home</a>
     <a href="#about">About</a>
+    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
+  <div class="toggle" onclick="toggleMode()">🌙</div>
 </header>
 
-<section class="hero">
-  <img src="profile.jpeg" alt="profile">
-  <div class="hero-text">
-    <h2>Hello, I'm Aakanksha 💜</h2>
-    <p>A passionate Web Developer & Cloud Enthusiast.</p>
-    <button class="btn">Hire Me</button>
+<section id="home" class="hero">
+  <div>
+    <h2>Hello, I'm Aakanksha</h2>
+    <div class="typing" id="typing"></div>
+    <p style="margin-top:15px;max-width:500px">
+      "I design cloud systems that don't just run — they scale, perform, and lead innovation."
+    </p>
+    <a href="#" class="btn">Download Resume</a>
   </div>
+  <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
 </section>
 
 <section id="about">
-  <h2 class="section-title">About Me</h2>
-  <p style="text-align:center; max-width:600px; margin:auto;">
-    I am an MCA student with skills in Web Development, AWS, and Python. I love building real-world projects and solving problems.
-  </p>
-</section>
-
-<section id="projects">
-  <h2 class="section-title">Projects</h2>
-  <div class="projects">
-    <div class="card">
-      <h3>Coffee Shop System</h3>
-      <p>Python & SQL based management system.</p>
-    </div>
-    <div class="card">
-      <h3>Portfolio CI/CD</h3>
-      <p>Deployed using GitHub Actions & AWS S3.</p>
-    </div>
-    <div class="card">
-      <h3>Event ERP</h3>
-      <p>Full-stack event management system.</p>
-    </div>
+  <h2>About Me</h2>
+  <div class="about-box">
+    <ul>
+      <li>🚀 Passionate AWS & Cloud Developer</li>
+      <li>💡 Problem Solver & Tech Enthusiast</li>
+      <li>☁️ Skilled in building scalable cloud systems</li>
+      <li>🎯 Goal: Become a top Cloud Engineer</li>
+      <li>🌱 Learning DevOps & Cloud Architecture</li>
+    </ul>
   </div>
 </section>
 
-<section>
-  <h2 class="section-title">Skills</h2>
-  <div class="skills">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Python</div>
-    <div class="skill">AWS</div>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/873/873120.png">
+      <h3>AWS Cloud</h3>
+      <div class="tags">
+        <span class="tag">EC2</span>
+        <span class="tag">S3</span>
+        <span class="tag">IAM</span>
+        <span class="tag">CloudWatch</span>
+        <span class="tag">CodePipeline</span>
+        <span class="tag">CodeBuild</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png">
+      <h3>Python</h3>
+      <div class="tags"><span class="tag">Backend</span><span class="tag">Automation</span></div>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+      <h3>Web</h3>
+      <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png">
+      <h3>MySQL</h3>
+      <div class="tags"><span class="tag">Queries</span><span class="tag">DB Design</span></div>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png">
+      <h3>MongoDB</h3>
+      <div class="tags"><span class="tag">NoSQL</span><span class="tag">Collections</span></div>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
+      <h3>GitHub</h3>
+      <div class="tags"><span class="tag">Version Control</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card"><h3>EventERP System</h3><p>Event management system with backend.</p></div>
+    <div class="card"><h3>AWS CI/CD Pipeline</h3><p>Automated deployment pipeline.</p></div>
+    <div class="card"><h3>Cloud File Storage</h3><p>File storage using AWS S3.</p></div>
+    <div class="card"><h3>Portfolio Website</h3><p>Responsive animated portfolio.</p></div>
+    <div class="card"><h3>Coffee Shop Management</h3><p>Python + SQL based billing & management system.</p></div>
   </div>
 </section>
 
 <section id="contact">
-  <h2 class="section-title">Contact</h2>
-  <p style="text-align:center;">Email: sonawaneaakanksha2503@gmail.com</p>
+  <h2>Contact</h2>
+  <div class="contact-box">
+
+    <div class="contact-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+      <h3>Email</h3>
+      <a href="mailto:sonawaneaakanksha2503@gmail.com">Send Email</a>
+    </div>
+
+    <div class="contact-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
+      <h3>LinkedIn</h3>
+      <a href="https://linkedin.com" target="_blank">Visit Profile</a>
+    </div>
+
+    <div class="contact-card">
+      <img src="profile2.jpeg">
+      <h3>Phone</h3>
+      <a href="#">Call Me</a>
+    </div>
+
+  </div>
+
+  <div class="typing-quote" id="quote"></div>
 </section>
 
 <footer>
-  <p>© 2026 Aakanksha | Designed with 💜</p>
+  <p>© Aakanksha Sonawane | Future Cloud Engineer 🚀</p>
 </footer>
+
+<script>
+  function toggleMode(){document.body.classList.toggle("light");}
+
+  const text = "AWS Developer | Cloud Engineer | Future Tech Leader";
+  let i = 0;
+  function typing(){if(i < text.length){document.getElementById("typing").innerHTML += text.charAt(i);i++;setTimeout(typing, 50);}}
+  typing();
+
+  const quoteText = "I don't chase opportunities — I build skills so powerful that opportunities chase me.";
+  let j = 0;
+  function quoteTyping(){if(j < quoteText.length){document.getElementById("quote").innerHTML += quoteText.charAt(j);j++;setTimeout(quoteTyping, 40);}}
+  quoteTyping();
+</script>
 
 </body>
 </html>
