@@ -1,1 +1,25 @@
+version: 0.2
 
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+
+  build:
+    commands:
+      - echo "Building static portfolio project..."
+
+  post_build:
+    commands:
+      - echo "Preparing artifacts for deployment..."
+
+artifacts:
+  files:
+    - index.html
+    - "*.css"
+    - "*.js"
+    - "*.jpeg"
+    - "*.png"
+    - "*.jpg"
+    - resume.pdf
+  discard-paths: yes
